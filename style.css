@@ -19,8 +19,6 @@ body {
 .main {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
-
 
     padding: 24px;
     gap: 24px;
@@ -31,13 +29,18 @@ body {
     flex-wrap: wrap;
     gap: 40px;
     justify-content: center;
-
+    
+    
+    margin: 0;
+   
 }
 
 .header {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    margin: 0;
+
+    
 }
 
 
