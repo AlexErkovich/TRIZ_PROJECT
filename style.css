@@ -11,24 +11,14 @@
 body {
   margin: 0 auto;
   background-color: var(--background-color);
-}
-
-.main {
-  display: flex;
-  flex-direction: column;
-
-  padding: 24px;
-  gap: 24px;
-}
-
-.main__content {
   display: flex;
   flex-wrap: wrap;
+  padding: 24px;
   gap: 40px;
- 
-
-  margin: 0;
+  justify-content: center;
 }
+
+
 
 .header {
   display: flex;

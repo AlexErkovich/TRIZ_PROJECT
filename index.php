@@ -30,13 +30,11 @@
 
 
     <div class="main">
-
-        <div class="main__content">
-
+            
             <?php
 
             // Выполнение запроса к базе данных
-            $sql = "SELECT * FROM content"; // Предполагая, что "title" - это название столбца с заголовком
+            $sql = "SELECT * FROM content"; 
             $result = $conn->query($sql);
 
 
@@ -57,7 +55,7 @@
                         <img src="img/Icone-tag__icone.svg" style="width: 32px; height: 32px;">
                         <span>Подробнее</span>
                     </div>
-                    <article>history</article>
+                    <article>' . $row["tag"] . '</article>
                 </div>
             </div>
         </div>';
@@ -68,8 +66,8 @@
             // Закрываем соединение с базой данных
             $conn->close();
             ?>
-        </div>
     </div>
+    
 
 </body>
 
