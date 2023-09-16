@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -13,19 +12,56 @@
 </head>
 
 <body>
-    <div class="main">
+
+    <?php
+    $servername = "localhost"; // Имя сервера базы данных
+    $username = "Alex"; // Имя пользователя базы данных
+    $password = "12345"; // Пароль пользователя
+    $dbname = "triz_data"; // Имя базы данных
+    
+    // Создаем соединение
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Проверяем соединение
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Выполнение запроса к базе данных
+    $sql = "SELECT * FROM content"; // Предполагая, что "title" - это название столбца с заголовком
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '    <div class="main">
         <div class="header">
             <h1>Tasks</h1>
             <button> Add the task <img src="img/close-square.svg"></button>
-            
+
         </div>
         <div class="main__content">
+
             <div class="card">
                 <div class="card__content">
                     <div class="card__content__text">
-                        <h2>Название карточки</h2>
-                        <p>Как отучить лис грызть провода оборудования. Третье предложение должно входить а остальное
-                            уходить в...</p>
+                    <h2>' . $row["title"] . '</h2>
+                        <p>' . $row["prev"] . '</p>
+                    </div>
+                    <img src="img/Olga.svg">
+                </div>
+                <div class="card__bottom__content">
+                    <div class="card__bottom__content__more">
+                        <img src="img/Icone-tag__icone.svg" style="width: 32px; height: 32px;">
+                        <span>Подробнее</span>
+                    </div>
+                    <article>history</article>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card__content">
+                    <div class="card__content__text">
+                    <h2>' . $row["title"] . '</h2>
+                        <p>' . $row["prev"] . '</p>
                     </div>
                     <img src="img/07_band.svg">
                 </div>
@@ -36,9 +72,67 @@
                     </div>
                     <article>history</article>
                 </div>
-           
+            </div>
+            <div class="card">
+                <div class="card__content">
+                    <div class="card__content__text">
+                    <h2>' . $row["title"] . '</h2>
+                        <p>' . $row["prev"] . '</p>
+                    </div>
+                    <img src="img/07_band.svg">
+                </div>
+                <div class="card__bottom__content">
+                    <div class="card__bottom__content__more">
+                        <img src="img/Icone-tag__icone.svg" style="width: 32px; height: 32px;">
+                        <span>Подробнее</span>
+                    </div>
+                    <article>history</article>
+                </div>
+            </div>
+            <div class="card">
+            <div class="card__content">
+                <div class="card__content__text">
+                <h2>' . $row["title"] . '</h2>
+                    <p>' . $row["prev"] . '</p>
+                </div>
+                <img src="img/07_band.svg">
+            </div>
+            <div class="card__bottom__content">
+                <div class="card__bottom__content__more">
+                    <img src="img/Icone-tag__icone.svg" style="width: 32px; height: 32px;">
+                    <span>Подробнее</span>
+                </div>
+                <article>history</article>
+            </div>
+        </div>
+        <div class="card">
+        <div class="card__content">
+            <div class="card__content__text">
+            <h2>' . $row["title"] . '</h2>
+                <p>' . $row["prev"] . '</p>
+            </div>
+            <img src="img/07_band.svg">
+        </div>
+        <div class="card__bottom__content">
+            <div class="card__bottom__content__more">
+                <img src="img/Icone-tag__icone.svg" style="width: 32px; height: 32px;">
+                <span>Подробнее</span>
+            </div>
+            <article>history</article>
         </div>
     </div>
+            
+        </div>
+
+        </div>';
+        }
+    } else {
+        echo "0 результатов";
+    }
+
+    // Закрываем соединение с базой данных
+    $conn->close();
+    ?>
 </body>
 
 </html>

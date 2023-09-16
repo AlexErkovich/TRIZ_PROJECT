@@ -22,6 +22,7 @@ body {
 
     padding: 24px;
     gap: 24px;
+    
 }
 
 .main__content {
@@ -29,7 +30,6 @@ body {
     flex-wrap: wrap;
     gap: 40px;
     justify-content: center;
-    
     
     margin: 0;
    
@@ -119,6 +119,7 @@ p {
     display: flex;
     flex-direction: row;
     gap: 16px;
+    align-items: flex-start;
 }
 
 .card__content__text {
