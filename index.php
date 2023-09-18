@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prosto+One&display=swap" rel="stylesheet">
-    <title>TITLE</title>
+    <title>TRIZ DATA TASKS</title>
 </head>
 
 <body>
@@ -30,17 +30,17 @@
 
 
     <div class="main">
-            
-            <?php
 
-            // Выполнение запроса к базе данных
-            $sql = "SELECT * FROM content"; 
-            $result = $conn->query($sql);
+        <?php
+
+        // Выполнение запроса к базе данных
+        $sql = "SELECT * FROM content";
+        $result = $conn->query($sql);
 
 
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '  
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo '  
 
             <div class="card">
                 <div class="card__content">
@@ -59,15 +59,19 @@
                 </div>
             </div>
         </div>';
-                }
-            } else {
-                echo "0 результатов";
             }
-            // Закрываем соединение с базой данных
-            $conn->close();
-            ?>
+        } else {
+            echo "0 результатов";
+        }
+        // Закрываем соединение с базой данных
+        $conn->close();
+        ?>
+
+        <a href="form.php"><button>Добавить свою задачу</button></a>
+
+        
     </div>
-    
+
 
 </body>
 
