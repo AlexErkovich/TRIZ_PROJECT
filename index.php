@@ -65,14 +65,10 @@
         }
         // Закрываем соединение с базой данных
         $conn->close();
-        ?>
-
-        <a href="form.php"><button>Добавить свою задачу</button></a>
-
-        
+        ?>        
     </div>
 
-
+    <a href="form.php"><button>Добавить свою задачу</button></a>
 </body>
 
 </html>

@@ -14,7 +14,7 @@
 <body>
     <form id="addTask" action="addTask.php" method="post">
         <p><label for="task_title">Введите название задачи</label></p>
-        <p><input id="task_title" style="width: 375px;" type="text" name="title"></p>
+        <p><input id="task_title"  type="text" name="title"></p>
 
         <p><label for="task_description">Введите описание задачи</label></p>
         <p><textarea id="task_description" rows="10" cols="45" name="prev"></textarea></p>
@@ -23,12 +23,12 @@
         <p><textarea id="task_solution" rows="10" cols="45" name="decision"></textarea></p>
 
         <p><label for="task_tag">Добавьте категорию задачи</label></p>
-        <p><input id="task_tag" style="width: 375px;" type="text" name="tag"></p>
+        <p><input id="task_tag"  type="text" name="tag"></p>
 
         <p><label for="task_img">Загрузите изображение</label></p>
         <p> <input type="file" multiple formmethod="post" class="input"></p>
 
-        <p><input type="submit" value="Отправить" /></p>
+        <p><input id="button" type="submit" value="Отправить" ></p>
     </form>
 </body>
 
