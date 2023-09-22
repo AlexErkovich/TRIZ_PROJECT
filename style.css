@@ -20,6 +20,16 @@ body {
   align-items: stretch;
 }
 
+.card-details{
+color: #3d3d3d;
+}
+
+.main{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  gap: 40px;
+}
 .header {
   display: flex;
   justify-content: space-between;
@@ -36,7 +46,11 @@ button {
   gap: 12px;
   flex-direction: row;
   align-items: center;
+  margin-left: 8%;
+  margin-right: 8%;
+  
 }
+
 
 button:hover {
   background-color: var(--text-color);
@@ -173,6 +187,7 @@ input {
 
 
 
-a {
+body a {
   text-decoration: none;
+  width: 100%;
 }

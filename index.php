@@ -18,7 +18,7 @@
     $username = "Alex"; // Имя пользователя базы данных
     $password = "12345"; // Пароль пользователя
     $dbname = "triz_data"; // Имя базы данных
-    
+
     // Создаем соединение
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -28,47 +28,48 @@
     }
     ?>
 
-
     <div class="main">
 
         <?php
-
         // Выполнение запроса к базе данных
         $sql = "SELECT * FROM content";
         $result = $conn->query($sql);
 
-
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo '  
-
-            <div class="card">
+            <div class="card" onclick="openDetailsPage(' . $row["id"] . ')">
                 <div class="card__content">
                     <div class="card__content__text">
-                    <h2>' . $row["title"] . '</h2>
+                        <h2>' . $row["title"] . '</h2>
                         <p>' . $row["prev"] . '</p>
-                       </div>
-                       <img style=" width: 72px; height: 72px;" src="data:image/jpeg;base64,' . base64_encode($row["img"]) . '">
+                    </div>
+                    <img style="width: 72px; height: 72px;" src="data:image/jpeg;base64,' . base64_encode($row["img"]) . '">
                 </div>
                 <div class="card__bottom__content">
-                    <div class="card__bottom__content__more">
+                    <div class="card__bottom__content__more" onclick="openDetailsPage(' . $row["id"] . ')">
                         <img src="img/Icone-tag__icone.svg" style="width: 32px; height: 32px;">
                         <span>Подробнее</span>
                     </div>
                     <article>' . $row["tag"] . '</article>
                 </div>
-            </div>
-        </div>';
+            </div>';
             }
         } else {
             echo "0 результатов";
         }
         // Закрываем соединение с базой данных
         $conn->close();
-        ?>        
+        ?>
+
+        <a href="form.php"><button class="add">Добавить свою задачу</button></a>
     </div>
 
-    <a href="form.php"><button>Добавить свою задачу</button></a>
+    <script>
+        function openDetailsPage(cardId) {
+            window.location.href = 'details.php?id=' + cardId;
+        }
+    </script>
 </body>
 
 </html>
