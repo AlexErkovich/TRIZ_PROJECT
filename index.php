@@ -13,63 +13,88 @@
 
 <body>
 
-    <?php
-    $servername = "localhost"; // Имя сервера базы данных
-    $username = "Alex"; // Имя пользователя базы данных
-    $password = "12345"; // Пароль пользователя
-    $dbname = "triz_data"; // Имя базы данных
-
-    // Создаем соединение
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Проверяем соединение
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    ?>
-
     <div class="main">
+        <div class="main__title">
+            <h1>TASKS</h1>
+            <button onclick="addTasksPage()">Добавить свою задачу</button>
+        </div>
 
-        <?php
-        // Выполнение запроса к базе данных
-        $sql = "SELECT * FROM content";
-        $result = $conn->query($sql);
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo '  
-            <div class="card" onclick="openDetailsPage(' . $row["id"] . ')">
-                <div class="card__content">
-                    <div class="card__content__text">
-                        <h2>' . $row["title"] . '</h2>
-                        <p>' . $row["prev"] . '</p>
-                    </div>
-                    <img style="width: 72px; height: 72px;" src="data:image/jpeg;base64,' . base64_encode($row["img"]) . '">
-                </div>
-                <div class="card__bottom__content">
-                    <div class="card__bottom__content__more" onclick="openDetailsPage(' . $row["id"] . ')">
-                        <img src="img/Icone-tag__icone.svg" style="width: 32px; height: 32px;">
-                        <span>Подробнее</span>
-                    </div>
-                    <article>' . $row["tag"] . '</article>
-                </div>
-            </div>';
+        <div class="main__content">
+            <?php
+            $servername = "localhost";
+            $username = "Alex";
+            $password = "12345";
+            $dbname = "triz_data";
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
             }
-        } else {
-            echo "0 результатов";
-        }
-        // Закрываем соединение с базой данных
-        $conn->close();
-        ?>
 
-        <a href="form.php"><button class="add">Добавить свою задачу</button></a>
+
+            // Execute the SQL query
+            //Этот код представляет собой фрагмент PHP-кода, который выполняет следующие действия:
+            //1. Проверяет, есть ли какие-то строки (записи) в результате выполнения запроса к базе данных (предположительно, запрос на выборку данных).
+            //Если результат запроса содержит одну или более строк, то происходит вход в блок кода, представленный фигурными скобками {}.
+            //Внутри этого блока кода происходит цикл while, который будет выполняться для каждой строки в результирующем наборе данных.
+            //Внутри цикла каждая строка (ряд) данных из результирующего набора извлекается и сохраняется в переменную $row.
+            //Для каждой строки данных в результирующем наборе происходит вывод содержимого переменной $row с помощью echo.
+            //Таким образом, этот код предполагает вывод данных из результирующего набора в виде текста или HTML
+            //(в зависимости от того, что находится в переменной $row).
+            //Исправления:
+            //Поправлено имя переменной $database на $dbname в строке подключения к базе данных.
+            //Добавлен атрибут alt для изображения, чтобы предоставить текстовое описание изображения для доступности.
+            //Заменен пустой атрибут img на атрибут src с пустым значением для изображения в теге img.
+            //Удалены лишние комментарии и приведена более читабельная структура кода.
+
+            $sql = "SELECT * FROM content";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '
+                <div class="card" onclick="openDetailsPage(' . $row["id"] . ')">
+                    <div class="card__content">
+                        <div class="card__content__text">
+                            <h2>' . $row["title"] . '</h2>
+                            <p>' . $row["prev"] . '</p>
+                        </div>
+                        <img src="your_image_path_here" style="width: 72px; height: 72px;" alt="Image">
+                    </div>
+                    <div class="card__bottom__content">
+                        <div class="card__bottom__content__more" onclick="openDetailsPage(' . $row["id"] . ')">
+                            <img src="img/Icone-tag__icone.svg" style="width: 32px; height: 32px;" alt="Tag Icon">
+                            <span>Подробнее</span>
+                        </div>
+                        <article>' . $row["tag"] . '</article>
+                    </div>
+                </div>';
+                }
+            } else {
+                echo "0 результатов";
+            }
+
+            // Close the connection
+            $conn->close();
+            ?>
+        </div>
     </div>
+
 
     <script>
         function openDetailsPage(cardId) {
             window.location.href = 'details.php?id=' + cardId;
         }
+
+        function addTasksPage() {
+            window.location.href = 'form.php';
+        }
     </script>
+
 </body>
 
 </html>

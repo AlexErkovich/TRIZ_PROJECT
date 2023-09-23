@@ -12,24 +12,39 @@
 </head>
 
 <body>
-    <form id="addTask" action="addTask.php" method="post">
-        <p><label for="task_title">Введите название задачи</label></p>
-        <p><input id="task_title"  type="text" name="title"></p>
+    <div class="main">
+        <div class="main__title">
+            <h1>TASKS</h1>
+            <button onclick="redirectToIndex()">Закрыть</button>
+        </div>
 
-        <p><label for="task_description">Введите описание задачи</label></p>
-        <p><textarea id="task_description" rows="10" cols="45" name="prev"></textarea></p>
 
-        <p><label for="task_solution">Введите решение задачи</label></p>
-        <p><textarea id="task_solution" rows="10" cols="45" name="decision"></textarea></p>
+        <div class="main__content">
+            <form id="addTask" action="addTask.php" method="post">
+                <p><label for="task_title">Введите название задачи</label></p>
+                <p><input id="task_title" type="text" name="title"></p>
 
-        <p><label for="task_tag">Добавьте категорию задачи</label></p>
-        <p><input id="task_tag"  type="text" name="tag"></p>
+                <p><label for="task_description">Введите описание задачи</label></p>
+                <p><textarea id="task_description" rows="10" cols="45" name="prev"></textarea></p>
 
-        <p><label for="task_img">Загрузите изображение</label></p>
-        <p> <input type="file" multiple formmethod="post" class="input"></p>
+                <p><label for="task_solution">Введите решение задачи</label></p>
+                <p><textarea id="task_solution" rows="10" cols="45" name="decision"></textarea></p>
 
-        <p><input id="button" type="submit" value="Отправить" ></p>
-    </form>
+                <p><label for="task_tag">Добавьте категорию задачи</label></p>
+                <p><input id="task_tag" type="text" name="tag"></p>
+
+                <p><label for="task_img">Загрузите изображение</label></p>
+                <p> <input type="file" multiple formmethod="post" class="input"></p>
+
+                <p><input id="button" type="submit" value="Отправить"></p>
+            </form>
+        </div>
+    </div>
+    <script>
+        function redirectToIndex() {
+            window.location.href = 'index.php';
+        }
+    </script>
 </body>
 
 </html>
