@@ -14,30 +14,40 @@
 <body>
     <div class="main">
         <div class="main__title">
-            <h1>TASKS</h1>
-            <button onclick="redirectToIndex()">Закрыть</button>
+            <h1>ДОБАВЛЕНИЕ ЗАДАЧИ</h1>
+            <button onclick="redirectToIndex()"><img src="img/close-square.svg" style="width: 24px; height: 24px;">Закрыть</button>
         </div>
 
 
         <div class="main__content">
-            <form id="addTask" action="addTask.php" method="post">
-                <p><label for="task_title">Введите название задачи</label></p>
-                <p><input id="task_title" type="text" name="title"></p>
+            <div class="main__content__form">
+                <form id="addTask" action="addTask.php" method="post">
+                    <div class="main__content__form__inputs">
+                        <p><label for="task_title">Введите название задачи</label></p>
+                        <p><input id="task_title" type="text" name="title"></p>
 
-                <p><label for="task_description">Введите описание задачи</label></p>
-                <p><textarea id="task_description" rows="10" cols="45" name="prev"></textarea></p>
+                        <p><label for="task_description">Введите описание задачи</label></p>
+                        <p><textarea id="task_description" rows="10" cols="45" name="prev"></textarea></p>
 
-                <p><label for="task_solution">Введите решение задачи</label></p>
-                <p><textarea id="task_solution" rows="10" cols="45" name="decision"></textarea></p>
+                        <p><label for="task_solution">Введите решение задачи</label></p>
+                        <p><textarea id="task_solution" rows="10" cols="45" name="decision"></textarea></p>
 
-                <p><label for="task_tag">Добавьте категорию задачи</label></p>
-                <p><input id="task_tag" type="text" name="tag"></p>
+                        <p><label for="task_tag">Добавьте категорию задачи</label></p>
+                        <p><input id="task_tag" type="text" name="tag"></p>
 
-                <p><label for="task_img">Загрузите изображение</label></p>
-                <p> <input type="file" multiple formmethod="post" class="input"></p>
+                        <p><label for="task_img">Загрузите изображение</label></p>
+                        <p> <input type="file" multiple formmethod="post" class="input"></p>
+                    </div>
+                    <p><label for="tags">Выберите категорию задачи</label>
+                    <div class="tags">
+                        <span id="tag"> history</span>
+                        <span id="tag"> love</span>
+                        <span id="tag"> tech</span>
+                    </div>
 
-                <p><input id="button" type="submit" value="Отправить"></p>
-            </form>
+                    <p><input type="submit" value="Отправить"></p>
+                </form>
+            </div>
         </div>
     </div>
     <script>

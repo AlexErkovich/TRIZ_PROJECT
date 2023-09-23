@@ -34,6 +34,8 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 56px;
+
+
 }
 
 .main__title {
@@ -41,19 +43,29 @@ body {
   align-items: center;
   justify-content: space-between;
   text-align: left;
-  width: 100%; /* Занимаем всю доступную ширину */
+  width: 100%;
+  /* Занимаем всю доступную ширину */
 }
-
 
 .main__content {
   display: flex;
   flex-wrap: wrap;
-
-  padding: 24px;
   gap: 24px;
-
-  align-items: stretch;
+  margin-top: 32px;
+  justify-content: center;
 }
+
+.main__content__form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  gap: 16px;
+  width: 100%;
+  /* Устанавливаем ширину контейнера .main__content__form в 70% от родителя */
+}
+
+
 
 .header {
   display: flex;
@@ -62,19 +74,67 @@ body {
 }
 
 button {
-  
   padding: 12px 32px;
   background-color: var(--Primary-color);
   border-radius: 16px;
   border: 4px solid var(--text-color);
   font-size: 18px;
-  
+  display: flex;
+  align-items: center;
+  /* Выравнивание по вертикали */
+  justify-content: center;
+  /* Выравнивание по горизонтали */
+  text-align: center;
+  /* Выравнивание текста по центру */
+}
+
+button img {
+  margin-right: 12px;
+  /* Расстояние между изображением и текстом */
 }
 
 button:hover {
   background-color: var(--text-color);
   color: var(--Primary-color);
   border-color: var(--card-green);
+  cursor: pointer;
+}
+
+#button {
+  padding: 12px 32px;
+  background-color: var(--Primary-color);
+  border-radius: 16px;
+  border: 4px solid var(--text-color);
+  font-size: 18px;
+}
+
+#button:hover {
+  background-color: var(--text-color);
+  color: var(--Primary-color);
+  border-color: var(--card-green);
+  cursor: pointer;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+#tag {
+  display: inline-block;
+  border-radius: 16px;
+  border: 2px solid #252525;
+  padding: 4px 24px;
+  text-align: center;
+  background-color: #ffffff;
+  transition: transform 0.3s ease-out;
+}
+
+#tag:hover {
+  transform: translateY(-5px);
   cursor: pointer;
 }
 
@@ -124,7 +184,12 @@ p {
   color: var(--text-color);
 
   gap: 16px;
+  transition: transform 0.6s ease-out;
 }
+
+
+
+
 
 .card__content {
   display: flex;
@@ -165,15 +230,23 @@ article {
 }
 
 .card:hover {
-  border: 4px solid #ffffff;
+  border: 4px solid var(--Primary-color);
   transition: 1ms ease-in;
   cursor: pointer;
+  transform: translateY(-5px);
+
 }
 
 /* —————————————— | FORM | —————————————— */
 
 form {
-  width: 50%;
+
+  width: 100%;
+  /* Устанавливаем ширину формы в 70% экрана */
+  max-width: 100%;
+  /* Дополнительно ограничиваем максимальную ширину */
+  /* остальные стили... */
+
   border: 3px solid var(--Secondary-color);
   border-radius: 16px;
   background-color: var(--Primary-color);
@@ -207,4 +280,43 @@ input {
 body a {
   text-decoration: none;
   width: 100%;
+}
+
+
+
+@media (max-width: 414px) {
+  .main__title {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .main__title h1 {
+    margin-bottom: 10px;
+  }
+
+  .main__title button {
+    width: fit-content;
+    font-size: 12px;
+    padding: 8px 24px;
+  }
+}
+
+.main__content__form {
+  width: 100%;
+}
+
+.main__content {
+  width: auto;
+}
+
+@media (max-width: 320px) {
+  .main__title {
+    font-size: 18px;
+  }
+
+  .main__title button img {
+    width: 20px;
+    height: 20px;
+  }
 }

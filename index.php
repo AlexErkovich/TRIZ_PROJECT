@@ -16,9 +16,25 @@
     <div class="main">
         <div class="main__title">
             <h1>TASKS</h1>
-            <button onclick="addTasksPage()">Добавить свою задачу</button>
+            <button onclick="addTasksPage()"> <img src="img/arrow-square-left.svg" style="width: 24px; height: 24px;"> Добавить свою задачу</button>
         </div>
-
+        <div class="tags">
+            <span id="tag"> history</span>
+            <span id="tag"> love</span>
+            <span id="tag"> tech</span>
+            <span id="tag"> economic</span>
+            <span id="tag"> crime</span>
+            <span id="tag"> history</span>
+            <span id="tag"> love</span>
+            <span id="tag"> tech</span>
+            <span id="tag"> economic</span>
+            <span id="tag"> crime</span>
+            <span id="tag"> finance</span>
+            <span id="tag"> children</span>
+            <span id="tag"> logic</span>
+            <span id="tag"> animal</span>
+            <span id="tag"> sport</span>
+        </div>
 
         <div class="main__content">
             <?php

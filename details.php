@@ -16,7 +16,7 @@
     <div class="main">
         <div class="main__title">
             <h1>Задача по истории</h1>
-            <button onclick="redirectToIndex()">Назад к задачам</button>
+            <button onclick="redirectToIndex()"> <img src="img/arrow_left.svg" style="width: 24px; height: 24px;"> Назад к задачам </button>
         </div>
 
         <div class="main__content">
