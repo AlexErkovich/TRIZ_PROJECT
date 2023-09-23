@@ -123,7 +123,7 @@ button:hover {
   margin-bottom: 24px;
 }
 
-#tag {
+span {
   display: inline-block;
   border-radius: 16px;
   border: 2px solid #252525;
@@ -133,7 +133,7 @@ button:hover {
   transition: transform 0.3s ease-out;
 }
 
-#tag:hover {
+span:hover {
   transform: translateY(-5px);
   cursor: pointer;
 }

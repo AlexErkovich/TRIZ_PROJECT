@@ -19,21 +19,39 @@
             <button onclick="addTasksPage()"> <img src="img/arrow-square-left.svg" style="width: 24px; height: 24px;"> Добавить свою задачу</button>
         </div>
         <div class="tags">
-            <span id="tag"> history</span>
-            <span id="tag"> love</span>
-            <span id="tag"> tech</span>
-            <span id="tag"> economic</span>
-            <span id="tag"> crime</span>
-            <span id="tag"> history</span>
-            <span id="tag"> love</span>
-            <span id="tag"> tech</span>
-            <span id="tag"> economic</span>
-            <span id="tag"> crime</span>
-            <span id="tag"> finance</span>
-            <span id="tag"> children</span>
-            <span id="tag"> logic</span>
-            <span id="tag"> animal</span>
-            <span id="tag"> sport</span>
+            <!--<span onclick="addTagPage()" id="history"> history</span> Этот код оставил для-->
+           
+            <?php
+            $servername = "localhost";
+            $username = "Alex";
+            $password = "12345";
+            $dbname = "triz_data";
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+
+            $sql = "SELECT * FROM history";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '
+                    <span  onclick="addTagPage()"> ' . $row["id"] . '</span>
+                ';
+                }
+            } else {
+                echo "0 результатов";
+            }
+
+            // Close the connection
+            $conn->close();
+            ?>
         </div>
 
         <div class="main__content">
@@ -84,7 +102,7 @@
                     <div class="card__bottom__content">
                         <div class="card__bottom__content__more" onclick="openDetailsPage(' . $row["id"] . ')">
                             <img src="img/Icone-tag__icone.svg" style="width: 32px; height: 32px;" alt="Tag Icon">
-                            <span>Подробнее</span>
+                            <h5>Подробнее</h5>
                         </div>
                         <article>' . $row["tag"] . '</article>
                     </div>
@@ -108,6 +126,10 @@
 
         function addTasksPage() {
             window.location.href = 'form.php';
+        }
+
+        function addTagPage() {
+            window.location.href = 'category.php?id=' + tagID;
         }
     </script>
 
