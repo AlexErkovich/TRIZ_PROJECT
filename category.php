@@ -13,7 +13,7 @@
 
 
 <body>
-<div class="main">
+    <div class="main">
         <div class="main__title">
             <h1>TASKS</h1>
             <button onclick="addTasksPage()"> <img src="img/arrow-square-left.svg" style="width: 24px; height: 24px;"> Добавить свою задачу</button>
@@ -25,14 +25,13 @@
             $password = "12345";
             $dbname = "triz_data";
 
-            // Create connection
+            // Создаем соединение
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-            // Check connection
+            // Проверяем соединение
             if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+                die("Ошибка соединения: " . $conn->connect_error);
             }
-
 
             $sql = "SHOW TABLES";
             $result = $conn->query($sql);
@@ -45,10 +44,11 @@
                 echo "0 результатов";
             }
 
-            // Close the connection
+            // Закрываем соединение
             $conn->close();
             ?>
         </div>
+
 
         <div class="main__content">
             <?php
@@ -81,24 +81,28 @@
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
+                $imageData = "";
+                if ($tableRow["img"]) {
+                    $imageData = base64_encode($tableRow["img"]);
+                }
                 while ($row = $result->fetch_assoc()) {
                     echo '
-                <div class="card" onclick="openDetailsPage(' . $row["id"] . ')">
-                    <div class="card__content">
-                        <div class="card__content__text">
-                            <h2>' . $row["title"] . '</h2>
-                            <p>' . $row["prev"] . '</p>
-                        </div>
-                        <img src="your_image_path_here" style="width: 72px; height: 72px;" alt="Image">
-                    </div>
-                    <div class="card__bottom__content">
-                        <div class="card__bottom__content__more" onclick="openDetailsPage(' . $row["id"] . ')">
-                            <img src="img/Icone-tag__icone.svg" style="width: 32px; height: 32px;" alt="Tag Icon">
-                            <h5>Подробнее</h5>
-                        </div>
-                        <article>' . $row["tag"] . '</article>
-                    </div>
-                </div>';
+    <div class="card" onclick="openDetailsPage(' . $row["id"] . ')">
+        <div class="card__content">
+            <div class="card__content__text">
+                <h2>' . $row["title"] . '</h2>
+                <p>' . $row["prev"] . '</p>
+            </div>
+            <img src="' . $imageData . '" style="width: 72px; height: 72px;" alt="Image">
+        </div>
+        <div class="card__bottom__content">
+            <div class="card__bottom__content__more" onclick="openDetailsPage(' . $row["id"] . ')">
+                <img src="img/Icone-tag__icone.svg" style="width: 32px; height: 32px;" alt="Tag Icon">
+                <h5>Подробнее</h5>
+            </div>
+            <article>' . $table_name . '</article>
+        </div>
+    </div>';
                 }
             } else {
                 echo "0 результатов";

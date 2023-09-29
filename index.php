@@ -12,7 +12,6 @@
 </head>
 
 <body>
-
     <div class="main">
         <div class="main__title">
             <h1>TASKS</h1>
@@ -25,59 +24,98 @@
             $password = "12345";
             $dbname = "triz_data";
 
-            // Create connection
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-            // Check connection
             if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+                die("Ошибка соединения: " . $conn->connect_error);
             }
 
-            // Get a list of all tables in the database
             $sql = "SHOW TABLES";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_row()) {
-                    // For each table, fetch and display its content
-                    $tableName = $row[0];
-                    echo '<div class="table-data">';
-                    echo '<h2>Table: ' . $tableName . '</h2>';
-
-                    // Fetch data from the current table
-                    $sql = "SELECT * FROM " . $tableName;
-                    $tableResult = $conn->query($sql);
-
-                    if ($tableResult->num_rows > 0) {
-                        while ($tableRow = $tableResult->fetch_assoc()) {
-                            echo '<div class="card">';
-                            echo '<div class="card__content">';
-                            echo '<div class="card__content__text">';
-                            echo '<h3>' . $tableRow["title"] . '</h3>';
-                            echo '<p>' . $tableRow["prev"] . '</p>';
-                            echo '</div>';
-                            echo '</div>';
-                            echo '</div>';
-                        }
-                    } else {
-                        echo "0 results in table: " . $tableName;
-                    }
-
-                    echo '</div>';
+                    echo '<span onclick="addTagPage(\'' . $row[0] . '\')"> ' . $row[0] . '</span>';
                 }
             } else {
-                echo "0 results";
+                echo "0 результатов";
             }
 
-            // Close the connection
             $conn->close();
             ?>
         </div>
-    </div>
 
+        <div class="main__content">
+            <?php
+            $servername = "localhost";
+            $username = "Alex";
+            $password = "12345";
+            $dbname = "triz_data";
+
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            if ($conn->connect_error) {
+                die("Ошибка соединения: " . $conn->connect_error);
+            }
+
+            $sql = "SHOW TABLES";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_row()) {
+                    $table_name = $row[0];
+
+                    $sql_select = "SELECT * FROM $table_name";
+                    $result_select = $conn->query($sql_select);
+
+                    if ($result_select->num_rows > 0) {
+                        while ($tableRow = $result_select->fetch_assoc()) {
+                            $imageData = "";
+                            if ($tableRow["img"]) {
+                                $imageData = base64_encode($tableRow["img"]);
+                            }
+
+                            echo '
+                    <div class="card" onclick="openDetailsPage(' . $tableRow["id"] . ',\'' . $table_name . '\')">
+                        <div class="card__content">
+                            <div class="card__content__text">
+                                <h2>' . $tableRow["title"] . '</h2>
+                                <p>' . $tableRow["prev"] . '</p>
+                            </div>
+                            <img src="data:image/png;base64,' . $imageData . '" alt="Изображение" style="width: 80px; height: 80px;">
+                        </div>
+                        <div class="card__bottom__content">
+                            <div class="card__bottom__content__more">
+                                <h5>Подробнее</h5>
+                            </div>
+                            <article>' . $table_name . '</article>
+                        </div>
+                    </div>';
+                        }
+                    } else {
+                        echo "0 результатов";
+                    }
+                }
+            } else {
+                echo "0 результатов";
+            }
+
+            $conn->close();
+            ?>
+
+        </div>
+    </div>
     <script>
+        function openDetailsPage(cardId, tableName) {
+            window.location.href = 'details.php?id=' + cardId + '&table=' + tableName;
+        }
+
         function addTasksPage() {
             window.location.href = 'form.php';
+        }
+
+        function addTagPage(tagName) {
+            window.location.href = 'category.php?name=' + tagName;
         }
     </script>
 
