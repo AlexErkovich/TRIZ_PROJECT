@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prosto+One&display=swap" rel="stylesheet">
@@ -13,10 +13,41 @@
 
 
 <body>
-    <div class="main">
+<div class="main">
         <div class="main__title">
-            <h1>Здесь будет подтягиваться название таблицы</h1>
-            <button onclick="redirectToIndex()"> <img src="img/arrow_left.svg" style="width: 24px; height: 24px;"> Назад к задачам </button>
+            <h1>TASKS</h1>
+            <button onclick="addTasksPage()"> <img src="img/arrow-square-left.svg" style="width: 24px; height: 24px;"> Добавить свою задачу</button>
+        </div>
+        <div class="tags">
+            <?php
+            $servername = "localhost";
+            $username = "Alex";
+            $password = "12345";
+            $dbname = "triz_data";
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+
+            $sql = "SHOW TABLES";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_row()) {
+                    echo '<span onclick="addTagPage(\'' . $row[0] . '\')"> ' . $row[0] . '</span>';
+                }
+            } else {
+                echo "0 результатов";
+            }
+
+            // Close the connection
+            $conn->close();
+            ?>
         </div>
 
         <div class="main__content">
@@ -79,8 +110,8 @@
         </div>
     </div>
     <script>
-        function redirectToIndex() {
-            window.location.href = 'index.php';
+        function addTasksPage() {
+            window.location.href = 'form.php';
         }
     </script>
 </body>
