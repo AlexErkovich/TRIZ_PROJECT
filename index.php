@@ -17,32 +17,39 @@
             <h1>TASKS</h1>
             <button onclick="addTasksPage()"> <img src="img/arrow-square-left.svg" style="width: 24px; height: 24px;"> Добавить свою задачу</button>
         </div>
-        <div class="tags">
-            <?php
-            $servername = "localhost";
-            $username = "Alex";
-            $password = "12345";
-            $dbname = "triz_data";
+        <div class="filtr">
+            <div class="tags_title-filtr">
+                <h3>Filtr</h5>
+                    <img src="img/filtr.svg" style="width: 32px; height: 32px;" onclick="toggleTagsVisibility()">
+            </div>
+            <div class="tags" id="tagsBlock">
 
-            $conn = new mysqli($servername, $username, $password, $dbname);
+                <?php
+                $servername = "localhost";
+                $username = "Alex";
+                $password = "12345";
+                $dbname = "triz_data";
 
-            if ($conn->connect_error) {
-                die("Ошибка соединения: " . $conn->connect_error);
-            }
+                $conn = new mysqli($servername, $username, $password, $dbname);
 
-            $sql = "SHOW TABLES";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_row()) {
-                    echo '<span onclick="addTagPage(\'' . $row[0] . '\')"> ' . $row[0] . '</span>';
+                if ($conn->connect_error) {
+                    die("Ошибка соединения: " . $conn->connect_error);
                 }
-            } else {
-                echo "0 результатов";
-            }
 
-            $conn->close();
-            ?>
+                $sql = "SHOW TABLES";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_row()) {
+                        echo '<span onclick="addTagPage(\'' . $row[0] . '\')"> ' . $row[0] . '</span>';
+                    }
+                } else {
+                    echo "0 результатов";
+                }
+
+                $conn->close();
+                ?>
+            </div>
         </div>
 
         <div class="main__content">
@@ -82,11 +89,11 @@
                                 <h2>' . $tableRow["title"] . '</h2>
                                 <p>' . $tableRow["prev"] . '</p>
                             </div>
-                            <img src="data:image/png;base64,' . $imageData . '" alt="Изображение" style="width: 80px; height: 80px;">
+                            <img src="data:image/png;base64,' . $imageData . '" alt="Изображение" style="width: 80px; height: 80px; border-radius: 8px;">
                         </div>
                         <div class="card__bottom__content">
                             <div class="card__bottom__content__more">
-                                <h5>Подробнее</h5>
+                                <i>Подробнее</i>
                             </div>
                             <article>' . $table_name . '</article>
                         </div>
@@ -106,6 +113,14 @@
         </div>
     </div>
     <script>
+        function toggleTagsVisibility() {
+            var tagsBlock = document.getElementById('tagsBlock');
+            if (tagsBlock.style.display === 'none' || tagsBlock.style.display === '') {
+                tagsBlock.style.display = 'block';
+            } else {
+                tagsBlock.style.display = 'none';
+            }
+        }
         function openDetailsPage(cardId, tableName) {
             window.location.href = 'details.php?id=' + cardId + '&table=' + tableName;
         }

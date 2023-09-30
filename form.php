@@ -32,9 +32,6 @@
                         <p><label for="task_solution">Введите решение задачи</label></p>
                         <p><textarea id="task_solution" rows="10" cols="45" name="decision"></textarea></p>
 
-                        <p><label for="task_tag">Добавьте категорию задачи</label></p>
-                        <p><input id="task_tag" type="text" name="tag"></p>
-
                         <p><label for="task_img">Загрузите изображение</label></p>
                         <p> <input type="file" multiple formmethod="post" class="input"></p>
                     </div>
@@ -54,6 +51,7 @@
         function redirectToIndex() {
             window.location.href = 'index.php';
         }
+        
     </script>
 </body>
 

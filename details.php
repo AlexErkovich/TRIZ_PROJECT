@@ -50,7 +50,6 @@
             echo '<div class="card-details">';
             echo '<h2>' . $row["title"] . '</h2>';
             echo '<h3> Описание задачи </h3> <p>' . $row["description"] . '</p>';
-            echo '<p>' . $row["prev"] . '</p>';
             echo '<h3> Решение </h3> <p>' . $row["decision"] . '</p>';
             echo '</div>';
         } else {
