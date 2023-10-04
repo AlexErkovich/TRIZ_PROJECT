@@ -102,7 +102,7 @@
             </div>
             <article>' . $table_name . '</article>
         </div>
-    </div>';
+      </div>';
                 }
             } else {
                 echo "0 результатов";

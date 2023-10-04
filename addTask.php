@@ -29,6 +29,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "Ошибка при добавлении задачи: " . $conn->error;
     }
 }
-
 $conn->close();
 ?>

@@ -34,8 +34,7 @@ body {
   justify-content: left;
   align-items: flex-start;
   margin-top: 56px;
-
-
+  margin-bottom: 32px;
 }
 
 .main__title {
@@ -55,6 +54,14 @@ body {
   justify-content: left;
 }
 
+#mainContent{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 32px;
+  justify-content: left;
+}
+
 .main__content__form {
   display: flex;
   flex-direction: row;
@@ -65,14 +72,14 @@ body {
   /* Устанавливаем ширину контейнера .main__content__form в 70% от родителя */
 }
 
-h3{
+h3 {
   color: var(--Primary-color);
   font-family: Prosto One;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
   margin: 0;
-  
+
 }
 
 
@@ -130,13 +137,14 @@ button:hover {
   flex-wrap: wrap;
   gap: 16px;
   margin-top: 24px;
-  
+
   align-content: center;
   justify-content: left;
+  width: 100%;
 }
 
 
-.filtr{
+.filtr {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -170,13 +178,14 @@ h1 {
 }
 
 
-i{
+i {
   font-family: Prosto One;
   font-size: 14px;
   font-style: normal;
   font-weight: 200;
   color: var(--Secondary-color);
 }
+
 h2 {
   margin: 0;
 
@@ -185,8 +194,22 @@ h2 {
   font-style: normal;
   font-weight: 400;
   line-height: 22px;
+  
 }
 
+.main__title img{
+  display: none;
+}
+h4 {
+  margin: 0;
+
+  font-family: Prosto One;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  color: var(--Primary-color);
+}
 p {
   margin: 0;
 
@@ -213,10 +236,34 @@ p {
   color: var(--text-color);
 
   gap: 16px;
-  transition: transform 0.6s ease-out;
+  
 }
 
-.tags_title-filtr{
+
+.card img {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease-in-out;
+}
+
+.card img:hover{
+  filter: grayscale(0%);
+}
+
+
+.card:hover {
+  border: 4px solid var(--Primary-color);
+  transition: 1ms ease-in;
+  cursor: pointer;
+  transform: translateY(-5px);
+  filter: grayscale(0%);
+
+}
+
+
+
+
+
+.tags_title-filtr {
   display: flex;
   flex-direction: row;
   justify-content: left;
@@ -224,14 +271,21 @@ p {
   gap: 12px;
   width: auto;
 }
-.tags_title-filtr:hover{
+
+.tags_title-filtr:hover {
   cursor: pointer;
 }
 
 
 #tagsBlock {
   display: none;
+  flex-direction: row;
+  justify-content: left;
+  gap: 24px;
+  transition: 1s ease-in-out;
 }
+
+
 
 .card__content {
   display: flex;
@@ -242,7 +296,7 @@ p {
 
 .card__content__text {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   gap: 8px;
 }
 
@@ -273,7 +327,7 @@ article {
 
 
 
-.tag{
+.tag {
   background-color: var(--tag-main);
   color: var(--text-color);
   border: 2px solid var(--text-color);
@@ -282,13 +336,8 @@ article {
 
   border-radius: 32px;
 }
-.card:hover {
-  border: 4px solid var(--Primary-color);
-  transition: 1ms ease-in;
-  cursor: pointer;
-  transform: translateY(-5px);
 
-}
+
 
 /* —————————————— | FORM | —————————————— */
 
@@ -344,6 +393,22 @@ body a {
     text-align: left;
   }
 
+  .main{
+    justify-content: center;
+  }
+  .main__content{
+    justify-content: center;
+  }
+
+  .main__title button{
+    display: none;
+  }
+
+  .main__title img{
+    display: flex;
+  }
+
+
   .main__title h1 {
     margin-bottom: 10px;
   }
@@ -373,3 +438,59 @@ body a {
     height: 20px;
   }
 }
+
+
+  /* ДОНЯ СОКРАЩАЛА 
+:root {
+  --card-green: #2cd997;
+  --tag-main: #ffffff;
+  --text-color: #262626;
+  --background-color: #a259ff;
+  --Primary-color: #ffffff;
+  --Secondary-color: #2f2f2f;
+}
+
+body {
+  margin: 0 auto;
+  background-color: var(--background-color);
+}
+
+.card-img {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease-in-out;
+}
+
+.card:hover .card-img {
+  filter: grayscale(0%);
+}
+
+.card-img, .card::before {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+span, .tag, .article {
+  background-color: var(--tag-main);
+  color: var(--text-color);
+  border: 2px solid var(--text-color);
+  padding: 4px 8px;
+  border-radius: 32px;
+}
+*/

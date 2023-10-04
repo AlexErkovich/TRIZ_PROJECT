@@ -1,0 +1,46 @@
+.footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 колонки с одинаковой шириной */
+    gap: 40px;
+    /* Отступ между колонками */
+    padding: 24px 32px 24px 32px;
+    /* Внутренний отступ */
+    background-color: #191919;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
+.footer__column {
+    display: flex;
+    width: auto;
+    /* Ширина колонки */
+     /*border: 1px dotted #FFF; */
+    align-items: center;
+
+
+}
+
+.footer__text {
+    display: flex;
+    margin: 0;
+    /* Убираем внутренний отступ у абзацев */
+    color: #FFF;
+
+    font-family: Prosto One;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 100;
+    justify-content: center;
+}
+
+
+
+
+/* В этом примере мы используем методологию БЭМ для названия классов, где
+"footer" - блок, "footer__column" - элемент блока, "footer__text" - элемент блока. 
+Это помогает структурировать и именовать классы, делая код более
+понятным и удобным для работы.*/
