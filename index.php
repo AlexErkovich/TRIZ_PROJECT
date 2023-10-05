@@ -24,18 +24,18 @@
             <h1>TASKS</h1>
             <!-- Кнопка для добавления новой задачи -->
             <button onclick="addTasksPage()">
-                <img src="img/arrow-square-left.svg" style="width: 24px; height: 24px;"> Добавить свою задачу
+                <img src="img/add.svg" style="width: 24px; height: 24px;"> Добавить свою задачу
             </button>
             <!-- Иконка для добавления новой задачи -->
-            <img onclick="addTasksPage()" src="img/add.svg">
+            <img onclick="addTasksPage()" src="">
         </div>
         <!-- Фильтр задач -->
         <div class="filtr">
             <div class="tags_title-filtr">
                 <!-- Заголовок фильтра -->
-                <h3>Filtr</h5>
-                    <!-- Иконка для отображения/скрытия тегов -->
-                    <img src="img/filtr.svg" style="width: 32px; height: 32px;" onclick="toggleTagsVisibility()">
+                <!-- Иконка для отображения/скрытия тегов -->
+                <img src="img/filter.svg" style="width: 32px; height: 32px;" onclick="toggleTagsVisibility()">
+                <h3 onclick="toggleTagsVisibility()">Filtr</h3>
             </div>
             <!-- Блок с тегами -->
             <div class="tags" id="tagsBlock">
@@ -59,8 +59,11 @@
                 // Проверяем наличие результатов
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_row()) {
-                        // Выводим теги на страницу
-                        echo '<span onclick="showTableContent(\'' . $row[0] . '\')"> ' . $row[0] . '</span>';
+                        // Проверка на название "reception"
+                        if ($row[0] !== 'reception') {
+                            // Выводим теги на страницу
+                            echo '<span onclick="showTableContent(\'' . $row[0] . '\')"> ' . $row[0] . '</span>';
+                        }
                     }
                 } else {
                     echo "0 результатов";
@@ -118,7 +121,8 @@
             window.location.href = 'category.php?name=' + tagName;
         }
     </script>
+    <?php include('footer.php'); ?>
 </body>
-<?php include('footer.php'); ?>
+
 
 </html>

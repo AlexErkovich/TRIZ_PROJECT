@@ -34,7 +34,7 @@ body {
   justify-content: left;
   align-items: flex-start;
   margin-top: 56px;
-  margin-bottom: 32px;
+  margin-bottom: 120px;
 }
 
 .main__title {
@@ -51,6 +51,7 @@ body {
   flex-wrap: wrap;
   gap: 24px;
   margin-top: 32px;
+  margin-bottom: 56px;
   justify-content: left;
 }
 
@@ -73,7 +74,7 @@ body {
 }
 
 h3 {
-  color: var(--Primary-color);
+  color: var(--Secondary-color);
   font-family: Prosto One;
   font-size: 20px;
   font-style: normal;
@@ -278,7 +279,7 @@ p {
 
 
 #tagsBlock {
-  display: none;
+  display: flex;
   flex-direction: row;
   justify-content: left;
   gap: 24px;
@@ -400,12 +401,12 @@ body a {
     justify-content: center;
   }
 
-  .main__title button{
-    display: none;
+  .main__title button img{
+    display: flex;
   }
 
   .main__title img{
-    display: flex;
+    display: none;
   }
 
 
@@ -428,6 +429,8 @@ body a {
   width: auto;
 }
 
+
+
 @media (max-width: 320px) {
   .main__title {
     font-size: 18px;
@@ -439,6 +442,19 @@ body a {
   }
 }
 
+
+@media (max-width: 320px) {
+  .card-details {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 320px) {
+  .card-details {
+    width: 100%;
+  }
+}
 
   /* ДОНЯ СОКРАЩАЛА 
 :root {

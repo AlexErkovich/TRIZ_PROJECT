@@ -68,7 +68,7 @@
                 window.location.href = 'index.php';
             }
         </script>
-
+<?php include('footer.php'); ?>
 </body>
 
 </html>

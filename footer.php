@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="css/footer.css">
 <footer class="footer">
     <div class="footer__column">
-        <img src="logo.svg">
+        <img  style="width: fit-content; height: 40px;; "src="img/logo.svg">
     </div>
 
     <div class="footer__column">
