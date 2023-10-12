@@ -21,8 +21,10 @@
     /* Ширина колонки */
      /*border: 1px dotted #FFF; */
     align-items: center;
+}
 
-
+.footer__column img:hover {
+    cursor: pointer;
 }
 
 .footer__text {

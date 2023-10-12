@@ -12,8 +12,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prosto+One&display=swap" rel="stylesheet">
+    <script src="js/script.js"></script>
     <!-- Устанавливаем заголовок страницы -->
     <title>TRIZ DATA TASKS</title>
+
 </head>
 
 <body>
@@ -21,22 +23,21 @@
     <div class="main">
         <!-- Заголовок страницы -->
         <div class="main__title">
-            <h1>TASKS</h1>
-            <!-- Кнопка для добавления новой задачи -->
+            <h1>ТРИЗ ЗАДАЧИ</h1>
+            <div class="tags_title-filtr">
+                <!-- Заголовок фильтра -->
+                <h3 onclick="toggleTagsVisibility()">Filtr</h3>
+                <img src="img/filter.svg" style="width: 32px; height: 32px;" onclick="toggleTagsVisibility()">
+            </div>
+            <!-- Кнопка для добавления новой задачи 
             <button onclick="addTasksPage()">
                 <img src="img/add.svg" style="width: 24px; height: 24px;"> Добавить свою задачу
-            </button>
-            <!-- Иконка для добавления новой задачи -->
-            <img onclick="addTasksPage()" src="">
+            </button>-->
+
         </div>
         <!-- Фильтр задач -->
         <div class="filtr">
-            <div class="tags_title-filtr">
-                <!-- Заголовок фильтра -->
-                <!-- Иконка для отображения/скрытия тегов -->
-                <img src="img/filter.svg" style="width: 32px; height: 32px;" onclick="toggleTagsVisibility()">
-                <h3 onclick="toggleTagsVisibility()">Filtr</h3>
-            </div>
+
             <!-- Блок с тегами -->
             <div class="tags" id="tagsBlock">
                 <?php
@@ -59,8 +60,8 @@
                 // Проверяем наличие результатов
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_row()) {
-                        // Проверка на название "reception"
-                        if ($row[0] !== 'reception') {
+                        // Проверка на название "reception" и "public relations"
+                        if ($row[0] !== 'reception' && $row[0] !== 'public relations') {
                             // Выводим теги на страницу
                             echo '<span onclick="showTableContent(\'' . $row[0] . '\')"> ' . $row[0] . '</span>';
                         }
@@ -72,6 +73,7 @@
                 // Закрываем соединение с базой данных
                 $conn->close();
                 ?>
+
             </div>
         </div>
 
@@ -80,49 +82,7 @@
             <!-- Содержимое таблицы будет загружено сюда -->
         </div>
     </div>
-
-    <!-- Скрипты JavaScript -->
-    <script>
-        function showTableContent(tableName) {
-            // Выполняем AJAX-запрос для загрузки задач по выбранной таблице
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    // Обновляем блок с контентом задач
-                    document.getElementById("mainContent").innerHTML = this.responseText;
-                }
-            };
-            xhttp.open("GET", "get_tasks_by_table.php?table=" + tableName, true);
-            xhttp.send();
-        }
-
-        // Функция для переключения видимости тегов
-        function toggleTagsVisibility() {
-            var tagsBlock = document.getElementById('tagsBlock');
-            if (tagsBlock.style.display === 'none' || tagsBlock.style.display === '') {
-                tagsBlock.style.display = 'block';
-            } else {
-                tagsBlock.style.display = 'none';
-            }
-        }
-
-        // Функция для открытия страницы с подробной информацией о задаче
-        function openDetailsPage(cardId, tableName) {
-            window.location.href = 'details.php?id=' + cardId + '&table=' + tableName;
-        }
-
-        // Функция для перехода на страницу добавления новой задачи
-        function addTasksPage() {
-            window.location.href = 'form.php';
-        }
-
-        // Функция для перехода на страницу с задачами по определенному тегу
-        function addTagPage(tagName) {
-            window.location.href = 'category.php?name=' + tagName;
-        }
-    </script>
     <?php include('footer.php'); ?>
 </body>
-
 
 </html>

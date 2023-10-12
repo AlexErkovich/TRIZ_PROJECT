@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prosto+One&display=swap" rel="stylesheet">
+    <script src="js/script.js"></script>
     <title>Card Details</title>
 </head>
 
@@ -49,9 +50,12 @@
                 if ($result->num_rows > 0) {
                     $row = $result->fetch_assoc();
                     echo '<div class="card-details">';
+                    echo '<img style="width: 360px;" src="data:image/jpeg;base64,' . base64_encode($row["img"]) . '" alt="Image">';
+                    echo '<div class="card-details_content">';
                     echo '<h2>' . $row["title"] . '</h2>';
                     echo '<h4> Описание задачи </h4> <p>' . $row["description"] . '</p>';
-                    echo '<h4> Решение </h3> </4>' . $row["decision"] . '</p>';
+                    #echo '<h4> Решение </h3> </4>' . $row["decision"] . '</p>';
+                    echo '</div>';
                     echo '</div>';
                 } else {
                     echo "No detailed information found for the selected card.";
@@ -63,15 +67,7 @@
             $conn->close();
             ?>
         </div>
-        <script>
-            function redirectToIndex() {
-                window.location.href = 'index.php';
-            }
-        </script>
-<?php include('footer.php'); ?>
+        <?php include('footer.php'); ?>
 </body>
 
 </html>
-
-
-   
